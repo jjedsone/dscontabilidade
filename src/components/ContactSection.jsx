@@ -1,4 +1,4 @@
-import { WHATSAPP_URL } from "../constants.js";
+import { CONTACT_EMAIL, OFFICE_HOURS, PHONE_DISPLAY_FULL, PHONE_HREF, WHATSAPP_URL } from "../constants.js";
 
 export default function ContactSection() {
   return (
@@ -39,7 +39,7 @@ export default function ContactSection() {
               São Paulo, SP — CEP 08130-485
             </p>
             <p className="contact-mail">
-              <a href="mailto:contato@dsempresarial.com.br">contato@dsempresarial.com.br</a>
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
             <p className="muted contact-anchor-map">
               <a href="#mapa-kemel">Ver localização no mapa</a>
@@ -48,9 +48,9 @@ export default function ContactSection() {
           <div className="contact-card contact-card-phone" data-reveal style={{ "--reveal-delay": "0.16s" }}>
             <h3>Contato e redes</h3>
             <p>
-              <a href="tel:+551125662157">+55 (11) 2566-2157</a>
+              <a href={PHONE_HREF}>{PHONE_DISPLAY_FULL}</a>
             </p>
-            <p className="muted">Segunda a sexta, 8h30 às 17h</p>
+            <p className="muted">{OFFICE_HOURS}</p>
             <p>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                 Fale com a equipe no WhatsApp

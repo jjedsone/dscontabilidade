@@ -1,4 +1,4 @@
-import { LOGO_SRC } from "../constants.js";
+import { CONTACT_EMAIL, LOGO_SRC, PHONE_DISPLAY_SHORT, PHONE_HREF, SITE_HOST, SITE_NAME, SITE_URL } from "../constants.js";
 
 export default function SiteFooter() {
   const year = new Date().getFullYear();
@@ -10,7 +10,7 @@ export default function SiteFooter() {
           <img
             className="footer-logo-img"
             src={LOGO_SRC}
-            alt="DS Assessoria Empresarial"
+            alt={SITE_NAME}
             width={300}
             height={86}
             loading="lazy"
@@ -19,15 +19,15 @@ export default function SiteFooter() {
         </p>
         <p className="footer-copy">
           © {year}{" "}
-          <a href="https://dsempresarial.com.br/" rel="noopener noreferrer">
-            dsempresarial.com.br
+          <a href={SITE_URL} rel="noopener noreferrer">
+            {SITE_HOST}
           </a>{" "}
           — todos os direitos reservados.
         </p>
         <p className="footer-meta">
           CNPJ 07.454.343/0001-75 · Contato:{" "}
-          <a href="mailto:contato@dsempresarial.com.br">contato@dsempresarial.com.br</a> ·{" "}
-          <a href="tel:+551125662157">(11) 2566-2157</a>
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> ·{" "}
+          <a href={PHONE_HREF}>{PHONE_DISPLAY_SHORT}</a>
         </p>
         <p className="footer-legal">
           <a href="#privacidade">Política de privacidade</a>

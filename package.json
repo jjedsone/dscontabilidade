@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\" \"index.html\""
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\" \"index.html\"",
+    "deploy:firebase": "npm run build && npx --yes firebase-tools deploy --only hosting"
   },
   "dependencies": {
     "react": "^18.3.1",

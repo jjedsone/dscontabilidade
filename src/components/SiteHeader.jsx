@@ -1,5 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LOGO_SRC, WHATSAPP_URL } from "../constants.js";
+import {
+  LOGO_SRC,
+  OFFICE_HOURS,
+  PHONE_DISPLAY_SHORT,
+  PHONE_HREF,
+  SITE_NAME,
+  WHATSAPP_URL,
+} from "../constants.js";
 
 export default function SiteHeader({ heroSectionRef }) {
   const headerRef = useRef(null);
@@ -32,11 +39,11 @@ export default function SiteHeader({ heroSectionRef }) {
     <header ref={headerRef} className="site-header site-header--hero-video" id="topo">
       <div className="top-bar">
         <div className="top-bar-inner">
-          <a href="tel:+551125662157">(11) 2566-2157</a>
+          <a href={PHONE_HREF}>{PHONE_DISPLAY_SHORT}</a>
           <span className="top-bar-sep" aria-hidden="true">
             ·
           </span>
-          <span>Segunda à sexta, 8h30 às 17h</span>
+          <span>{OFFICE_HOURS}</span>
           <span className="top-bar-sep" aria-hidden="true">
             ·
           </span>
@@ -54,7 +61,7 @@ export default function SiteHeader({ heroSectionRef }) {
         </div>
       </div>
       <div className="container header-inner">
-        <a className="logo" href="#topo" aria-label="DS Assessoria Empresarial — início">
+        <a className="logo" href="#topo" aria-label={`${SITE_NAME} — início`}>
           <img
             className="logo-img"
             src={LOGO_SRC}

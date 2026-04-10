@@ -24,7 +24,7 @@ export default function App() {
         Ir para o conteúdo
       </a>
       <SiteHeader heroSectionRef={heroRef} />
-      <main id="conteudo">
+      <main id="conteudo" className="site-main">
         <HeroSection ref={heroRef} />
         <MarketingPulseBar />
         <TeamWorkspaceVideoSection />

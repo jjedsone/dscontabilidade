@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getFormSubmitAjaxUrl } from "../constants.js";
+import { CONTACT_EMAIL, getFormSubmitAjaxUrl, PHONE_DISPLAY_SHORT, PHONE_HREF } from "../constants.js";
 
 export default function LeadSection() {
   const [status, setStatus] = useState("idle");
@@ -81,8 +81,8 @@ export default function LeadSection() {
             <li>Diagnóstico inicial direto, sem juridiquês</li>
             <li>Proposta alinhada ao regime e ao tamanho da operação</li>
             <li>
-              <a href="tel:+551125662157">(11) 2566-2157</a> ·{" "}
-              <a href="mailto:contato@dsempresarial.com.br">contato@dsempresarial.com.br</a>
+              <a href={PHONE_HREF}>{PHONE_DISPLAY_SHORT}</a> ·{" "}
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </li>
           </ul>
         </div>
