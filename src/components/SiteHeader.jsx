@@ -105,6 +105,11 @@ export default function SiteHeader({ heroSectionRef }) {
                 Contato
               </a>
             </li>
+            <li>
+              <a href="#privacidade" onClick={() => setNavOpen(false)}>
+                Privacidade
+              </a>
+            </li>
           </ul>
           <a
             className="btn btn-primary btn-nav"

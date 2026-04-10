@@ -2655,3 +2655,87 @@ body.nav-open {
     right: max(1.5rem, env(safe-area-inset-right));
   }
 }
+
+/* Formulário de lead — feedback */
+.lead-form-feedback {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.lead-form-feedback--success {
+  background: rgba(13, 92, 74, 0.15);
+  color: #0a3d32;
+  border: 1px solid rgba(13, 92, 74, 0.28);
+}
+
+.lead-form-feedback--error {
+  background: rgba(196, 92, 38, 0.12);
+  color: #5c2e18;
+  border: 1px solid rgba(196, 92, 38, 0.35);
+}
+
+.section-cta .lead-form .btn-primary:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Política de privacidade */
+.section-privacy {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.privacy-inner {
+  max-width: 42rem;
+}
+
+.section-privacy h2 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.privacy-updated {
+  margin: 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: var(--color-ink-muted);
+}
+
+.privacy-prose h3 {
+  margin: 1.35rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.privacy-prose h3:first-of-type {
+  margin-top: 0.75rem;
+}
+
+.privacy-prose p {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--color-ink-muted);
+  line-height: 1.6;
+}
+
+.privacy-prose a {
+  font-weight: 600;
+}
+
+.footer-legal {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+}
+
+.footer-legal a {
+  font-weight: 600;
+}

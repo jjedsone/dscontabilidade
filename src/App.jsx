@@ -9,6 +9,7 @@ import AboutSection from "./components/AboutSection.jsx";
 import LeadSection from "./components/LeadSection.jsx";
 import PartnersSection from "./components/PartnersSection.jsx";
 import ContactSection from "./components/ContactSection.jsx";
+import PrivacySection from "./components/PrivacySection.jsx";
 import SiteFooter from "./components/SiteFooter.jsx";
 import FloatingWhatsapp from "./components/FloatingWhatsapp.jsx";
 import { useRevealOnScroll } from "./hooks/useRevealOnScroll.js";
@@ -33,6 +34,7 @@ export default function App() {
         <LeadSection />
         <PartnersSection />
         <ContactSection />
+        <PrivacySection />
       </main>
       <SiteFooter />
       <FloatingWhatsapp />

@@ -1,9 +1,71 @@
+import { useState } from "react";
+import { getFormSubmitAjaxUrl } from "../constants.js";
+
 export default function LeadSection() {
-  function handleSubmit(e) {
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    window.alert(
-      "Este é um protótipo estático. Ao publicar, conecte o envio ao seu e-mail, WhatsApp Business API ou CRM."
-    );
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const nome = String(fd.get("nome") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const telefone = String(fd.get("telefone") || "").trim();
+    const mensagem = String(fd.get("mensagem") || "").trim();
+    const gotcha = String(fd.get("_gotcha") || "").trim();
+
+    if (gotcha) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
+    if (!nome || !email) {
+      setErrorMessage("Preencha nome e e-mail.");
+      setStatus("error");
+      return;
+    }
+
+    setStatus("loading");
+    setErrorMessage("");
+
+    const payload = {
+      nome,
+      email,
+      telefone,
+      mensagem,
+      _gotcha: "",
+      _subject: "Contato pelo site — DS Assessoria",
+      _template: "table",
+      _captcha: false,
+    };
+
+    try {
+      const res = await fetch(getFormSubmitAjaxUrl(), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        throw new Error(data.message || data.error || `Erro ${res.status}`);
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch (err) {
+      setErrorMessage(
+        err instanceof Error ? err.message : "Não foi possível enviar. Tente o WhatsApp ou o e-mail."
+      );
+      setStatus("error");
+    }
   }
 
   return (
@@ -26,12 +88,30 @@ export default function LeadSection() {
         </div>
         <form
           className="lead-form lead-form--market"
-          action="#"
-          method="post"
           id="form-lead"
           onSubmit={handleSubmit}
           data-reveal
+          noValidate
         >
+          <p className="visually-hidden" aria-hidden="true">
+            <label>
+              <span className="visually-hidden">Deixe em branco</span>
+              <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" defaultValue="" />
+            </label>
+          </p>
+
+          {status === "success" && (
+            <p className="lead-form-feedback lead-form-feedback--success" role="status">
+              Mensagem enviada. Em breve a equipe DS entra em contato pelo e-mail ou telefone indicados.
+            </p>
+          )}
+
+          {status === "error" && (
+            <p className="lead-form-feedback lead-form-feedback--error" role="alert">
+              {errorMessage}
+            </p>
+          )}
+
           <label className="field">
             <span>Nome</span>
             <input type="text" name="nome" required autoComplete="name" placeholder="Seu nome" />
@@ -52,10 +132,14 @@ export default function LeadSection() {
               placeholder="Ex.: MEI crescendo, troca de regime, folha, atraso com obrigação…"
             />
           </label>
-          <button type="submit" className="btn btn-primary btn-lg btn-block btn-glow">
-            Quero ser contatado pela DS
+          <button type="submit" className="btn btn-primary btn-lg btn-block btn-glow" disabled={status === "loading"}>
+            {status === "loading" ? "Enviando…" : "Quero ser contatado pela DS"}
           </button>
-          <p className="form-note">Demonstração estática: conecte este formulário ao CRM ou e-mail ao publicar.</p>
+          <p className="form-note">
+            Ao enviar, você concorda com o tratamento dos dados conforme a{" "}
+            <a href="#privacidade">política de privacidade</a>. O envio usa o serviço FormSubmit; na primeira vez, pode
+            ser necessário confirmar o domínio pelo link enviado ao e-mail da DS.
+          </p>
         </form>
       </div>
     </section>

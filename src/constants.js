@@ -4,3 +4,15 @@ export const WHATSAPP_URL =
 
 /** Logo institucional (arquivo em /public). */
 export const LOGO_SRC = `${import.meta.env.BASE_URL}logo-ds-assessoria.png`;
+
+/** E-mail de contato (exibido no site e destino padrão do formulário). */
+export const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || "contato@dsempresarial.com.br";
+
+/**
+ * URL AJAX do FormSubmit (https://formsubmit.co). Na primeira utilização, confirme o domínio no e-mail recebido.
+ * Pode sobrepor com VITE_FORMSUBMIT_EMAIL se quiser outro destinatário só para o form.
+ */
+export function getFormSubmitAjaxUrl() {
+  const email = (import.meta.env.VITE_FORMSUBMIT_EMAIL || CONTACT_EMAIL).trim();
+  return `https://formsubmit.co/ajax/${encodeURIComponent(email)}`;
+}

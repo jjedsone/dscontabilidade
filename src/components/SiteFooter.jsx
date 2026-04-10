@@ -29,6 +29,9 @@ export default function SiteFooter() {
           <a href="mailto:contato@dsempresarial.com.br">contato@dsempresarial.com.br</a> ·{" "}
           <a href="tel:+551125662157">(11) 2566-2157</a>
         </p>
+        <p className="footer-legal">
+          <a href="#privacidade">Política de privacidade</a>
+        </p>
       </div>
     </footer>
   );
